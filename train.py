@@ -103,8 +103,8 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
             # Log and save
             training_report(tb_writer, iteration, Ll1, loss, l1_loss, iter_start.elapsed_time(iter_end), testing_iterations, scene, render, (pipe, background))
             #if (iteration in saving_iterations):
-            #change to save every 100th iteration
-            if iteration % 100 == 0:
+            #change to save every more often by iteration
+            if (iteration <= 1000 and iteration % 10 == 0) or (1000 < iteration <= 3000 and iteration % 100 == 0) or (iteration > 3000 and iteration % 1000 == 0):
                 print("\n[ITER {}] Saving Gaussians".format(iteration))
                 scene.save(iteration)
 
